@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="birdletter-admin:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="birdletter-admin.war">
+      <element id="artifact" artifact-name="birdletter-admin:war exploded" />
+    </root>
+  </artifact>
+</component>
