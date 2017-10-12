@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DataSource {
-	DataSourceType value() default DataSourceType.ADMIN;
+	DataSourceType value() default DataSourceType.LOG;
 }

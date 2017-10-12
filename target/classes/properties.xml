@@ -29,6 +29,6 @@
     
     <entry key="service.version">1.0.0</entry>
 
-    <entry key="school.search.api.key">e72f78b94377a9f6c7d56a69ef44bf80</entry>
-    <entry key="school.search.api.url">http://www.career.go.kr/cnet/openapi/getOpenApi</entry>
+    <entry key="school.search.api.key">${school.search.api.key}</entry>
+    <entry key="school.search.api.url">${school.search.api.url}</entry>
 </properties>
