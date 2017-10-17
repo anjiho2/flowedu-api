@@ -9,4 +9,6 @@ import org.apache.ibatis.annotations.Param;
 public interface LogMapper {
 
     void insertLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto);
+
+    void insertMemberLoginLog(@Param("memberId") Long memberId, @Param("memberName") String memberName);
 }

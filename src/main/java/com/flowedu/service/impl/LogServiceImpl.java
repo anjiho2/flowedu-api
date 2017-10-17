@@ -24,4 +24,11 @@ public class LogServiceImpl implements LogService {
         }
         logMapper.insertLecturePaymentLog(lecturePaymentLogDto);
     }
+
+    @Override
+    public void saveMemberLoginLog(Long memberId, String memberName) {
+        if (memberId == null) return;
+        logMapper.insertMemberLoginLog(memberId, memberName);
+    }
+
 }

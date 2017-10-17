@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by jihoan on 2017. 10. 12..
  */
@@ -36,6 +39,16 @@ public class LogController {
 
         LecturePaymentLogDto dto = new LecturePaymentLogDto(lectureName, price.intValue(), studentName, memberName);
         logService.saveLecturePaymentLog(dto);
+
+        return new ResponseEntity("OK", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/member_login", method = RequestMethod.GET)
+    public ResponseEntity saveMemberLogin(@RequestBody String jsonStr) throws Exception {
+        JsonParser parser = new JsonParser(jsonStr);
+        Long memberId = (Long)parser.val("memberId");
+        String memberName = (String)parser.val("memberName");
+        logService.saveMemberLoginLog(memberId, memberName);
 
         return new ResponseEntity("OK", HttpStatus.OK);
     }

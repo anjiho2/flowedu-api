@@ -8,4 +8,7 @@ import com.flowedu.dto.LecturePaymentLogDto;
 public interface LogService {
 
     void saveLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto);
+
+    void saveMemberLoginLog(Long memberId, String memberName);
+
 }

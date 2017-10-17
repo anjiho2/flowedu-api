@@ -9,4 +9,8 @@
         (#{lectureName}, #{paymentPrice}, #{studentName}, #{memberName})
     </insert>
 
+    <insert id="insertMemberLoginLog">
+        INSERT INTO
+    </insert>
+
 </mapper>
