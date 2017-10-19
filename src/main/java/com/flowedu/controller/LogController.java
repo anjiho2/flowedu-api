@@ -29,7 +29,7 @@ public class LogController {
     @Autowired
     private LogService logService;
 
-    @RequestMapping(value = "/payment", method = RequestMethod.POST)
+    @RequestMapping(value = "/pyment", method = RequestMethod.POST)
     public ResponseEntity savePayment(@RequestBody String jsonStr) throws Exception{
         JsonParser parser = new JsonParser(jsonStr);
         String lectureName = (String)parser.val("lectureName");
