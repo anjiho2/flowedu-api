@@ -2,28 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.flowedu.mapper.LogMapper">
 
-    <insert id="insertLecturePaymentLog" parameterType="com.flowedu.dto.LecturePaymentLogDto">
-        INSERT INTO LECTURE_PAYMENT_LOG
-        (lecture_name, payment_price, student_name, member_name)
-        VALUES
-        (#{lectureName}, #{paymentPrice}, #{studentName}, #{memberName})
-    </insert>
-
-    <insert id="deleteMemberLoginLog">
-        DELETE FROM LECTURE_PAYMENT_LOG WHERE lecture_payment_log_id = #{paymentId}
-    </insert>
-
-    <update id="updateMemberLoginLog" parameterType="com.flowedu.dto.LecturePaymentLogDto">
-        UPDATE LECTURE_PAYMENT_LOG
-        SET
-          lecture_name = #{lectureName},
-          payment_price = #{paymentPrice},
-          student_name = #{studentName},
-          member_name = #{memberName}
-        WHERE
-          lecture_payment_log_id = #{lecturePaymentLogId}
-    </update>
-
     <select id="paymentMemberList" resultType="com.flowedu.dto.LecturePaymentLogDto">
         SELECT * FROM LECTURE_PAYMENT_LOG
     </select>

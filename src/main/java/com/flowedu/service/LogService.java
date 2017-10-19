@@ -12,14 +12,6 @@ import java.util.List;
  */
 public interface LogService {
 
-    void saveLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto);
-
-    void saveMemberLoginLog(Long memberId, String memberName);
-
-    void deleteMemberLoginLog(Long paymentId);
-
-    void updateMemberLoginLog(LecturePaymentLogDto lecturePaymentLogDto);
-
     List<LecturePaymentLogDto> paymentMemberList();
 
     void saveLoginLog(LoginLogDto loginLogDto);

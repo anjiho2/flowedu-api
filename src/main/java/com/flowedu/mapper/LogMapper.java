@@ -11,14 +11,6 @@ import java.util.List;
  */
 public interface LogMapper {
 
-    void insertLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto);
-
-    void insertMemberLoginLog(@Param("memberId") Long memberId, @Param("memberName") String memberName);
-
-    void deleteMemberLoginLog(@Param("paymentId") Long paymentId);
-
-    void updateMemberLoginLog(LecturePaymentLogDto lecturePaymentLogDto);
-
     List<LecturePaymentLogDto> paymentMemberList();
 
     void saveLoginLog(LoginLogDto loginLogDto);
