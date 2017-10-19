@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
  * Created by jihoan on 2017. 10. 12..
@@ -43,6 +42,31 @@ public class LogController {
         return new ResponseEntity("OK", HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/payment/{paymentId}", method = RequestMethod.PUT)
+    public ResponseEntity updatePayment(@PathVariable Long paymentId, @RequestBody String jsonStr) throws Exception{
+        logger.info("paymentId ------------> " + paymentId);
+
+        JsonParser parser = new JsonParser(jsonStr);
+        String lectureName = (String)parser.val("lectureName");
+        Long price = (Long)parser.val("paymentPrice");
+        String studentName = (String)parser.val("studentName");
+        String memberName =  (String)parser.val("memberName");
+
+        LecturePaymentLogDto dto = new LecturePaymentLogDto(paymentId, lectureName, price.intValue(), studentName, memberName);
+        logService.updateMemberLoginLog(dto);
+
+        return new ResponseEntity("OK", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/payment/{paymentId}", method = RequestMethod.DELETE)
+    public ResponseEntity deletePayment(@PathVariable Long paymentId) throws Exception{
+        logger.info("delete_paymentId ------------> " + paymentId);
+
+        logService.deleteMemberLoginLog(paymentId);
+
+        return new ResponseEntity("OK", HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/member_login", method = RequestMethod.GET)
     public ResponseEntity saveMemberLogin(@RequestBody String jsonStr) throws Exception {
         JsonParser parser = new JsonParser(jsonStr);
@@ -53,17 +77,11 @@ public class LogController {
         return new ResponseEntity("OK", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/payment/{paymentId}", method = RequestMethod.PUT)
-    public ResponseEntity updatePayment(@PathVariable Long paymentId) throws Exception{
-        logger.info("paymentId ------------> " + paymentId);
-        return new ResponseEntity("OK", HttpStatus.OK);
+    @RequestMapping(value = "/payment/payment_list", method = RequestMethod.GET)
+    public ResponseEntity paymentMemberList() throws Exception {
+        List<LecturePaymentLogDto> Arr = logService.paymentMemberList();
+        logger.info("--------------------->" + Arr);
+        return new ResponseEntity(Arr, HttpStatus.OK);
     }
-
-    @RequestMapping(value = "/payment/{paymentId}", method = RequestMethod.DELETE)
-    public ResponseEntity deletePayment(@PathVariable Long paymentId) throws Exception{
-        logger.info("delete_paymentId ------------> " + paymentId);
-        return new ResponseEntity("OK", HttpStatus.OK);
-    }
-
 
 }

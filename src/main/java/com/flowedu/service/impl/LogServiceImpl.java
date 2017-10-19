@@ -8,6 +8,8 @@ import com.flowedu.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by jihoan on 2017. 10. 12..
  */
@@ -31,4 +33,26 @@ public class LogServiceImpl implements LogService {
         logMapper.insertMemberLoginLog(memberId, memberName);
     }
 
+    @Override
+    public void deleteMemberLoginLog(Long paymentId) {
+        if (paymentId == null) return;
+        logMapper.deleteMemberLoginLog(paymentId);
+    }
+
+    @Override
+    public void updateMemberLoginLog(LecturePaymentLogDto lecturePaymentLogDto) {
+        if(lecturePaymentLogDto == null) return;
+        logMapper.updateMemberLoginLog(lecturePaymentLogDto);
+    }
+
+    @Override
+    public List<LecturePaymentLogDto> paymentMemberList() {
+        List<LecturePaymentLogDto> Arr = logMapper.paymentMemberList();
+        return Arr;
+    }
 }
+
+
+
+
+

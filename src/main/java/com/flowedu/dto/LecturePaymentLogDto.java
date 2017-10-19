@@ -26,4 +26,12 @@ public class LecturePaymentLogDto {
         this.studentName = studentName;
         this.memberName = memberName;
     }
+
+    public LecturePaymentLogDto(Long lecturePaymentLogId, String lectureName, int paymentPrice, String studentName, String memberName){
+        this.lecturePaymentLogId = lecturePaymentLogId;
+        this.lectureName = lectureName;
+        this.paymentPrice = paymentPrice;
+        this.studentName = studentName;
+        this.memberName = memberName;
+    }
 }

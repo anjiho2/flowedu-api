@@ -9,8 +9,22 @@
         (#{lectureName}, #{paymentPrice}, #{studentName}, #{memberName})
     </insert>
 
-    <insert id="insertMemberLoginLog">
-        INSERT INTO
+    <insert id="deleteMemberLoginLog">
+        DELETE FROM LECTURE_PAYMENT_LOG WHERE lecture_payment_log_id = #{paymentId}
     </insert>
 
+    <update id="updateMemberLoginLog" parameterType="com.flowedu.dto.LecturePaymentLogDto">
+        UPDATE LECTURE_PAYMENT_LOG
+        SET
+          lecture_name = #{lectureName},
+          payment_price = #{paymentPrice},
+          student_name = #{studentName},
+          member_name = #{memberName}
+        WHERE
+          lecture_payment_log_id = #{lecturePaymentLogId}
+    </update>
+
+    <select id="paymentMemberList" resultType="com.flowedu.dto.LecturePaymentLogDto">
+        SELECT * FROM LECTURE_PAYMENT_LOG
+    </select>
 </mapper>
