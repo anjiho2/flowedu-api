@@ -27,4 +27,11 @@
     <select id="paymentMemberList" resultType="com.flowedu.dto.LecturePaymentLogDto">
         SELECT * FROM LECTURE_PAYMENT_LOG
     </select>
+
+    <insert id="saveLoginLog" parameterType="com.flowedu.dto.LoginLogDto">
+      INSERT INTO MEMBER_LOGIN_LOG
+      (member_id, member_name)
+      VALUES
+      (#{memberId}, #{memberName});
+    </insert>
 </mapper>

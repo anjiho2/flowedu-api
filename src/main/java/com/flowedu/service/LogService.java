@@ -1,6 +1,9 @@
 package com.flowedu.service;
 
+
+
 import com.flowedu.dto.LecturePaymentLogDto;
+import com.flowedu.dto.LoginLogDto;
 
 import java.util.List;
 
@@ -18,5 +21,7 @@ public interface LogService {
     void updateMemberLoginLog(LecturePaymentLogDto lecturePaymentLogDto);
 
     List<LecturePaymentLogDto> paymentMemberList();
+
+    void saveLoginLog(LoginLogDto loginLogDto);
 
 }

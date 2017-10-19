@@ -1,6 +1,7 @@
 package com.flowedu.mapper;
 
 import com.flowedu.dto.LecturePaymentLogDto;
+import com.flowedu.dto.LoginLogDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface LogMapper {
     void updateMemberLoginLog(LecturePaymentLogDto lecturePaymentLogDto);
 
     List<LecturePaymentLogDto> paymentMemberList();
+
+    void saveLoginLog(LoginLogDto loginLogDto);
 }
