@@ -52,7 +52,7 @@ public class LogController {
     }
 
     /* 로그인 로그저장 */
-    @RequestMapping(value = "/login_log", method = RequestMethod.PUT)
+    @RequestMapping(value = "/login_log", method = RequestMethod.POST)
     public ResponseEntity saveLoginLog(@RequestBody String jsonStr) throws Exception{
         JsonParser parser = new JsonParser(jsonStr);
         Long memberId = (Long) parser.val("memberId");
