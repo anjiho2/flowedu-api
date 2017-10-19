@@ -55,7 +55,7 @@ public class LogController {
     @RequestMapping(value = "/login_log", method = RequestMethod.POST)
     public ResponseEntity saveLoginLog(@RequestBody String jsonStr) throws Exception{
         JsonParser parser = new JsonParser(jsonStr);
-        Long memberId = (Long) parser.val("memberId");
+        Long memberId = (Long) parser.val("flowMemberId");
         String memberName = (String)parser.val("memberName");
 
         LoginLogDto dto = new LoginLogDto(memberId, memberName);
