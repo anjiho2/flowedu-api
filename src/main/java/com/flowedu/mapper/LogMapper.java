@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface LogMapper {
 
+    void insertLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto);
+
     List<LecturePaymentLogDto> paymentMemberList();
 
     void saveLoginLog(LoginLogDto loginLogDto);

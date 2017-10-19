@@ -12,6 +12,8 @@ import java.util.List;
  */
 public interface LogService {
 
+    void saveLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto);
+
     List<LecturePaymentLogDto> paymentMemberList();
 
     void saveLoginLog(LoginLogDto loginLogDto);

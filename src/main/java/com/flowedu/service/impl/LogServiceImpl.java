@@ -21,6 +21,15 @@ public class LogServiceImpl implements LogService {
     private LogMapper logMapper;
 
     @Override
+    public void saveLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto) {
+        if (lecturePaymentLogDto == null) {
+            throw new FlowEduException(FlowEduErrorCode.BAD_REQUEST);
+        }
+        logMapper.insertLecturePaymentLog(lecturePaymentLogDto);
+    }
+
+
+    @Override
     public List<LecturePaymentLogDto> paymentMemberList() {
         List<LecturePaymentLogDto> Arr = logMapper.paymentMemberList();
         return Arr;
