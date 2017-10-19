@@ -44,7 +44,12 @@ public class JsonParser<T> {
 	 * <p>List<Long> resultList = new JsonParser<Long>(jsonString).arr("arr");</p>
 	 *
 	 * @param param
+	 *
+	 *
+	 *
+	 *
 	 * @return
+	 *
 	 * @throws IOException
 	 */
 	public List<T> arr(String param) throws IOException {
