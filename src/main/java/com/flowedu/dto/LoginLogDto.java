@@ -8,14 +8,21 @@ import lombok.Data;
 @Data
 public class LoginLogDto {
 
+    private Long memberLoginLogId;
+
     private Long memberId;
 
     private String memberName;
 
+    private String connectIp;
+
+    private String createDate;
+
     public LoginLogDto() {}
 
-    public LoginLogDto(Long memberId, String memberName) {
+    public LoginLogDto(Long memberId, String memberName, String connectIp) {
         this.memberId = memberId;
         this.memberName = memberName;
+        this.connectIp = connectIp;
     }
 }

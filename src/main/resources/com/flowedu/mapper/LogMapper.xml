@@ -15,8 +15,8 @@
 
     <insert id="saveLoginLog" parameterType="com.flowedu.dto.LoginLogDto">
       INSERT INTO MEMBER_LOGIN_LOG
-      (member_id, member_name)
+      (member_id, member_name, connect_ip)
       VALUES
-      (#{memberId}, #{memberName});
+      (#{memberId}, #{memberName}, #{connectIp});
     </insert>
 </mapper>

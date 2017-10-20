@@ -51,16 +51,22 @@ public class LogController {
         return new ResponseEntity(Arr, HttpStatus.OK);
     }
 
-    /* 로그인 로그저장 */
+    /**
+     *
+     * @param jsonStr
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/login_log", method = RequestMethod.POST)
     public ResponseEntity saveLoginLog(@RequestBody String jsonStr) throws Exception{
         JsonParser parser = new JsonParser(jsonStr);
         Long memberId = (Long) parser.val("flowMemberId");
         String memberName = (String)parser.val("memberName");
+        String connectIp = (String)parser.val("connectIp");
 
-        LoginLogDto dto = new LoginLogDto(memberId, memberName);
+        LoginLogDto dto = new LoginLogDto(memberId, memberName, connectIp);
         logService.saveLoginLog(dto);
 
-        return new ResponseEntity("loginlog save success", HttpStatus.OK);
+        return new ResponseEntity("OK", HttpStatus.OK);
     }
 }
