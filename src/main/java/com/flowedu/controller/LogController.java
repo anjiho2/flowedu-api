@@ -2,6 +2,8 @@ package com.flowedu.controller;
 
 import com.flowedu.dto.LecturePaymentLogDto;
 import com.flowedu.dto.LoginLogDto;
+import com.flowedu.error.FlowEduErrorCode;
+import com.flowedu.error.FlowEduException;
 import com.flowedu.service.LogService;
 import com.flowedu.util.JsonParser;
 import org.slf4j.Logger;
@@ -30,16 +32,11 @@ public class LogController {
     private LogService logService;
 
    @RequestMapping(value = "/payment", method = RequestMethod.POST)
-    public ResponseEntity savePayment(@RequestBody String jsonStr) throws Exception{
-        JsonParser parser = new JsonParser(jsonStr);
-        String lectureName = (String)parser.val("lectureName");
-        Long price = (Long)parser.val("paymentPrice");
-        String studentName = (String)parser.val("studentName");
-        String memberName = (String)parser.val("memberName");
-
-        LecturePaymentLogDto dto = new LecturePaymentLogDto(lectureName, price.intValue(), studentName, memberName);
-        logService.saveLecturePaymentLog(dto);
-
+    public ResponseEntity savePayment(@RequestBody LecturePaymentLogDto lecturePaymentLogDto) throws Exception{
+        if (lecturePaymentLogDto == null) {
+            throw new FlowEduException(FlowEduErrorCode.CUSTOM_PAYMENT_LOG_NULL);
+        }
+        logService.saveLecturePaymentLog(lecturePaymentLogDto);
         return new ResponseEntity("OK", HttpStatus.OK);
     }
 
@@ -70,3 +67,7 @@ public class LogController {
         return new ResponseEntity("OK", HttpStatus.OK);
     }
 }
+
+
+
+

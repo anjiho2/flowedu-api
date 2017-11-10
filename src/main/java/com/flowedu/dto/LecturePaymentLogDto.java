@@ -1,5 +1,6 @@
 package com.flowedu.dto;
 
+import com.flowedu.domain.KisPosOcx;
 import lombok.Data;
 
 /**
@@ -18,6 +19,10 @@ public class LecturePaymentLogDto {
 
     private String memberName;
 
+    private String createDate;
+
+    private KisPosOcx kisPosOcx;
+
     public LecturePaymentLogDto() {}
 
     public LecturePaymentLogDto(String lectureName, int paymentPrice, String studentName, String memberName) {
@@ -25,6 +30,7 @@ public class LecturePaymentLogDto {
         this.paymentPrice = paymentPrice;
         this.studentName = studentName;
         this.memberName = memberName;
+
     }
 
     public LecturePaymentLogDto(Long lecturePaymentLogId, String lectureName, int paymentPrice, String studentName, String memberName){
