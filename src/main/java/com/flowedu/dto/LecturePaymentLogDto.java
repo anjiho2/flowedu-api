@@ -11,6 +11,8 @@ public class LecturePaymentLogDto {
 
     private Long lecturePaymentLogId;
 
+    private Long lectureRelId;
+
     private String lectureName;
 
     private int paymentPrice;

@@ -5,12 +5,12 @@
     <insert id="insertLecturePaymentLog" parameterType="com.flowedu.dto.LecturePaymentLogDto">
         INSERT INTO LECTURE_PAYMENT_LOG
         (
-          lecture_name, payment_price, student_name, member_name, cat_id, card_no, install_ment, trans_amt,
+          lecture_rel_id, lecture_name, payment_price, student_name, member_name, cat_id, card_no, install_ment, trans_amt,
           auth_no, reply_date, accepter_code, issure_code, issure_name, trans_no, merchant_reg_no, auth_type
         )
         VALUES
         (
-          #{lectureName}, #{paymentPrice}, #{studentName}, #{memberName}, #{kisPosOcx.catId}, #{kisPosOcx.cardNo},
+          #{lectureRelId}, #{lectureName}, #{paymentPrice}, #{studentName}, #{memberName}, #{kisPosOcx.catId}, #{kisPosOcx.cardNo},
           #{kisPosOcx.installMent}, #{kisPosOcx.transAmt}, #{kisPosOcx.authNo}, #{kisPosOcx.replyDate}, #{kisPosOcx.accepterCode},
           #{kisPosOcx.issureCode}, #{kisPosOcx.issureName}, #{kisPosOcx.transNo}, #{kisPosOcx.merchantRegNo}, #{kisPosOcx.authType}
         )
