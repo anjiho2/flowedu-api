@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class LogServiceImpl implements LogService {
 
-    @Autowired
+@Autowired
     private LogMapper logMapper;
 
     @Override
