@@ -13,7 +13,8 @@ public interface LogMapper {
 
     void insertLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto);
 
-    List<LecturePaymentLogDto> paymentMemberList();
+    List<LecturePaymentLogDto> receiptList(Long lectureRelId);
 
     void saveLoginLog(LoginLogDto loginLogDto);
+
 }

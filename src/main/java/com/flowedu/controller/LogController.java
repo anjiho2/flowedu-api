@@ -31,6 +31,16 @@ public class LogController {
     @Autowired
     private LogService logService;
 
+    /**
+     * <PRE>
+     * 1. Comment : 카드결제정보 저장
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2017. 11 .15
+     * </PRE>
+     * @param lecturePaymentLogDto
+     * @return
+     * @throws Exception
+     */
    @RequestMapping(value = "/payment", method = RequestMethod.POST)
     public ResponseEntity savePayment(@RequestBody LecturePaymentLogDto lecturePaymentLogDto) throws Exception{
         if (lecturePaymentLogDto == null) {
@@ -40,16 +50,27 @@ public class LogController {
         return new ResponseEntity("OK", HttpStatus.OK);
     }
 
-
-    @RequestMapping(value = "/payment/payment_list", method = RequestMethod.GET)
-    public ResponseEntity paymentMemberList() throws Exception {
-        List<LecturePaymentLogDto> Arr = logService.paymentMemberList();
-        logger.info("--------------------->" + Arr);
-        return new ResponseEntity(Arr, HttpStatus.OK);
+    /**
+     * <PRE>
+     * 1. Comment : 카드결제정보 리스트
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2017. 11 .15
+     * </PRE>
+     * @param lectureRelId
+     * @return
+     */
+    @RequestMapping(value = "/payment/receipt_list/{lectureRelId}", method = RequestMethod.GET)
+    public ResponseEntity paymentList(@PathVariable Long lectureRelId) {
+        List receipList = logService.receiptList(lectureRelId);
+        return new ResponseEntity(receipList, HttpStatus.OK);
     }
 
     /**
-     *
+     * <PRE>
+     * 1. Comment : 로그인 로그 저장
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2017. 11 .15
+     * </PRE>
      * @param jsonStr
      * @return
      * @throws Exception

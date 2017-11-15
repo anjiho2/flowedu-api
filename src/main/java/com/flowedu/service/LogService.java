@@ -14,7 +14,7 @@ public interface LogService {
 
     void saveLecturePaymentLog(LecturePaymentLogDto lecturePaymentLogDto);
 
-    List<LecturePaymentLogDto> paymentMemberList();
+    List<LecturePaymentLogDto> receiptList(Long lectureRelId);
 
     void saveLoginLog(LoginLogDto loginLogDto);
 

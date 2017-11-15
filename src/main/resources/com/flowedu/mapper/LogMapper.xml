@@ -16,8 +16,8 @@
         )
     </insert>
 
-    <select id="paymentMemberList" resultType="com.flowedu.dto.LecturePaymentLogDto">
-        SELECT * FROM LECTURE_PAYMENT_LOG
+    <select id="receiptList" resultType="com.flowedu.domain.LecturePaymentLog">
+        SELECT * FROM LECTURE_PAYMENT_LOG WHERE lecture_rel_id = #{lectureRelId}
     </select>
 
     <insert id="saveLoginLog" parameterType="com.flowedu.dto.LoginLogDto">
