@@ -1,5 +1,6 @@
 package com.flowedu.service.impl;
 
+import com.flowedu.domain.LecturePaymentLog;
 import com.flowedu.dto.LecturePaymentLogDto;
 import com.flowedu.dto.LoginLogDto;
 import com.flowedu.error.FlowEduErrorCode;
@@ -70,8 +71,43 @@ public class LogServiceImpl implements LogService {
         return Arr;
     }
 
+    /**
+     * <PRE>
+     * 1. Comment : 단일 카드결제정보 리스트
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2017. 11 .20
+     * </PRE>
+     * @param lecturePaymentLogId
+     * @return
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public List<LecturePaymentLogDto> receiptListOne(Long lecturePaymentLogId){
+        List<LecturePaymentLogDto> Arr = logMapper.receiptListOne(lecturePaymentLogId);
+        return Arr;
+    }
 
+    /**
+     * <PRE>
+     * 1. Comment : 카드취소 업데이트
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2017. 11 .20
+     * </PRE>
+     * @param lecturePaymentLogId
+     */
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void cancelPaymentLog(Long lecturePaymentLogId){
+        if(lecturePaymentLogId == null) return;
 
+        String getAuthType = logMapper.getAuthType(lecturePaymentLogId);
+
+        if(getAuthType.equals("D2") || getAuthType.equals("CR")){
+            throw new FlowEduException(FlowEduErrorCode.CUSTOM_PAYMENT_CANCEL_ERROR);
+        }
+
+        logMapper.cancelPaymentLog(lecturePaymentLogId);
+    }
 }
 
 

@@ -65,6 +65,22 @@ public class LogController {
         return new ResponseEntity(receipList, HttpStatus.OK);
     }
 
+
+    /**
+     * <PRE>
+     * 1. Comment : 카드결제정보 단일리스트
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2017. 11 .20
+     * </PRE>
+     * @param lecturePaymentLogId
+     * @return
+     */
+    @RequestMapping(value = "/payment/receipt_list_payment_log_id/{lecturePaymentLogId}", method = RequestMethod.GET)
+    public ResponseEntity paymentInfo(@PathVariable Long lecturePaymentLogId){
+        List receipList = logService.receiptListOne(lecturePaymentLogId);
+        return new ResponseEntity(receipList, HttpStatus.OK);
+    }
+
     /**
      * <PRE>
      * 1. Comment : 로그인 로그 저장
@@ -85,6 +101,22 @@ public class LogController {
         LoginLogDto dto = new LoginLogDto(memberId, memberName, connectIp);
         logService.saveLoginLog(dto);
 
+        return new ResponseEntity("OK", HttpStatus.OK);
+    }
+
+    /**
+     * <PRE>
+     * 1. Comment : 카드취소 로그 업데이트
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2017. 11 .20
+     * </PRE>
+     * @param lecturePaymentLogId
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/payment/cancel/{lecturePaymentLogId}", method = RequestMethod.PUT)
+    public ResponseEntity cancelPaymentLog(@PathVariable Long lecturePaymentLogId) throws Exception{
+        logService.cancelPaymentLog(lecturePaymentLogId);
         return new ResponseEntity("OK", HttpStatus.OK);
     }
 }

@@ -2,6 +2,7 @@ package com.flowedu.service;
 
 
 
+import com.flowedu.domain.LecturePaymentLog;
 import com.flowedu.dto.LecturePaymentLogDto;
 import com.flowedu.dto.LoginLogDto;
 
@@ -16,6 +17,10 @@ public interface LogService {
 
     List<LecturePaymentLogDto> receiptList(Long lectureRelId);
 
+    List<LecturePaymentLogDto> receiptListOne(Long lecturePaymentLogId);
+
     void saveLoginLog(LoginLogDto loginLogDto);
+
+    void cancelPaymentLog(Long lecturePaymentLogId);
 
 }

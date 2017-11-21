@@ -15,6 +15,11 @@ public interface LogMapper {
 
     List<LecturePaymentLogDto> receiptList(Long lectureRelId);
 
+    List<LecturePaymentLogDto> receiptListOne(Long lecturePaymentLogId);
+
     void saveLoginLog(LoginLogDto loginLogDto);
 
+    String getAuthType(Long lecturePaymentLogId);
+
+    void cancelPaymentLog(Long lecturePaymentLogId);
 }

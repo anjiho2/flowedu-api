@@ -8,7 +8,8 @@ public enum FlowEduErrorCode {
 		BAD_REQUEST(400, "Bad request, parameter not accepted"),
 	 	NOT_ALLOW_FILE_NAME_KOREAN(901, "not allow korean name"),
 	 	CUSTOM_DATA_LIST_NULL(902, "data list is null!"),
-		CUSTOM_PAYMENT_LOG_NULL(903, "payment log data is null!");
+		CUSTOM_PAYMENT_LOG_NULL(903, "payment log data is null!"),
+		CUSTOM_PAYMENT_CANCEL_ERROR(904, "auth_type is CR or D2");
 	;
 
 		int code;
