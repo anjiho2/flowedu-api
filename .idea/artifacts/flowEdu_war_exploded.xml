@@ -153,6 +153,9 @@
           <element id="library" level="project" name="Maven: org.springframework.retry:spring-retry:1.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.amqp:spring-erlang:1.4.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.erlang.otp:jinterface:1.5.6" />
+          <element id="library" level="project" name="Maven: org.jcodec:jcodec:0.1.9" />
+          <element id="library" level="project" name="Maven: org.jcodec:jcodec-javase:0.1.9" />
+          <element id="library" level="project" name="Maven: fakepath:xuggle-xuggler:5.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

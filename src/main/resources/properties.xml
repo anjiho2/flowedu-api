@@ -26,9 +26,10 @@
     <entry key="google.email.password">${google.email.password}</entry>
     
     <entry key="service.isUseEmail">${service.isUseEmail}</entry>
-    
     <entry key="service.version">${service.version}</entry>
 
-    <entry key="school.search.api.key">${school.search.api.key}</entry>
-    <entry key="school.search.api.url">${school.search.api.url}</entry>
+    <entry key="video.uploads.path">${video.uploads.path}</entry>
+    <entry key="video.resize.width">${video.resize.width}</entry>
+    <entry key="video.resize.height">${video.resize.height}</entry>
+    <entry key="video.thumbnail.uploads.path">${video.thumbnail.uploads.path}</entry>
 </properties>

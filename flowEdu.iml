@@ -173,5 +173,8 @@
     <orderEntry type="library" name="Maven: org.springframework.retry:spring-retry:1.2.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.amqp:spring-erlang:1.4.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.erlang.otp:jinterface:1.5.6" level="project" />
+    <orderEntry type="library" name="Maven: org.jcodec:jcodec:0.1.9" level="project" />
+    <orderEntry type="library" name="Maven: org.jcodec:jcodec-javase:0.1.9" level="project" />
+    <orderEntry type="library" name="Maven: fakepath:xuggle-xuggler:5.4" level="project" />
   </component>
 </module>
