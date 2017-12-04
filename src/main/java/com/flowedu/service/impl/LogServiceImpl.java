@@ -38,6 +38,10 @@ public class LogServiceImpl implements LogService {
             throw new FlowEduException(FlowEduErrorCode.BAD_REQUEST);
         }
         logMapper.insertLecturePaymentLog(lecturePaymentLogDto);
+
+
+
+
     }
 
     /**
