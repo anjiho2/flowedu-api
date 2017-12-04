@@ -396,6 +396,23 @@
 			<version>1.4.6.RELEASE</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.jcodec</groupId>
+			<artifactId>jcodec</artifactId>
+			<version>0.1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jcodec</groupId>
+			<artifactId>jcodec-javase</artifactId>
+			<version>0.1.9</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/xuggle/xuggle-xuggler -->
+		<dependency>
+			<groupId>fakepath</groupId>
+			<artifactId>xuggle-xuggler</artifactId>
+			<version>5.4</version>
+		</dependency>
+
 	</dependencies>
 
 

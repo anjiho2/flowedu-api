@@ -203,6 +203,13 @@ public class FileUtil {
 		return wb;
 	}
 
+	public static String removeFileExtension(String fileName) {
+		String extensionFileName = null;
+		int idx = fileName.lastIndexOf(".");
+		extensionFileName = fileName.substring(0, idx);
+		return extensionFileName;
+	}
+
 	public static void main(String args[]) throws Exception{
 		String targetDir = "C:/softforum/test";
 		//targetDir = targetDir + "/so/XAS_SO_7/libXAS_jni.so";
