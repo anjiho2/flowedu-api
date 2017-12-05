@@ -1,6 +1,8 @@
 package com.flowedu.service;
 
 import com.flowedu.config.ConfigHolder;
+import com.flowedu.error.FlowEduErrorCode;
+import com.flowedu.error.FlowEduException;
 import com.flowedu.util.FileUtil;
 import com.flowedu.video.MyVideoListener;
 import com.flowedu.video.Resizer;
@@ -27,12 +29,16 @@ import java.io.*;
 @Service
 public class VideoService {
 
-    //private static final String OUTPUT_FILE_PATH = "/Users/jihoan/Downloads/output.mp4";
-
+    /**
+     * 동영상 용량 줄이기
+     * @param destFile
+     * @throws Exception
+     */
     public void resizeVideo(File destFile) throws Exception {
         Integer WIDTH = ConfigHolder.getVideoResizeWidth();
         Integer HEIGHT = ConfigHolder.getVideoResizeHeight();
         String VIDEO_UPLOAD_PATH = ConfigHolder.getVideoUploadsPath();
+        //String VIDEO_UPLOAD_PATH = "/Users/jihoan/Documents/test1.mp4";
 
         // create custom listeners
         MyVideoListener myVideoListener = new MyVideoListener(WIDTH, HEIGHT);
@@ -49,13 +55,18 @@ public class VideoService {
         writer.addListener(myVideoListener);
 
         // show video when encoding
-        reader.addListener(ToolFactory.makeViewer(true));
+        //reader.addListener(ToolFactory.makeViewer(false));
 
         while (reader.readPacket() == null) {
             // continue coding
+            throw new FlowEduException(FlowEduErrorCode.CUSTOM_VIDEO_RESIZE_NULL);
         }
     }
 
+    /**
+     * 동영상 썸네일 추출 하기
+     * @param videoFile
+     */
     public void getThumbnailFromVideoFile(File videoFile) {
         String fileName = videoFile.getAbsolutePath();
         //String baseName = fileName.substring(fileName.lastIndexOf("\\") + 1, fileName.lastIndexOf("."));

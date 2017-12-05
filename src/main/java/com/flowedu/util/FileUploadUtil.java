@@ -136,4 +136,35 @@ public class FileUploadUtil {
         }
         return map;
     }
+
+    public static String fileUploadNoRename(MultipartHttpServletRequest request, String savePath) {
+        String fileName = "";
+
+        Iterator<String> it = request.getFileNames();
+        try {
+            while (it.hasNext()) {
+                String uploadFileName = it.next();
+
+                if (uploadFileName != null || !"".equals(uploadFileName)) {
+                    MultipartFile multipartFile = request.getFile(uploadFileName);
+                    //한글 꺠짐 방지처리
+                    String originalFileName = multipartFile.getOriginalFilename();
+
+                    if (originalFileName != null || !"".equals(originalFileName)) {
+                        File serverFile = new File(FileUtil.concatPath(savePath, originalFileName));
+                        multipartFile.transferTo(serverFile);
+                        //root경로 파일 삭제
+                        FileUtil.fileDelete(originalFileName);
+
+                        fileName = serverFile.getName();
+                    }
+                }
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileName;
+    }
 }
