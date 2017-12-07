@@ -101,6 +101,14 @@
     
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="spring.RegularCommonsMultipartResolver">
+        <property name="maxUploadSize" value="5242880000" />
+    </bean>
+
+
+
+
+
     <!-- Filter -->
     <!--<bean id="userSessionFilter" class="com.flowedu.filter.UserSessionFilter"/>-->
 	

@@ -1,5 +1,6 @@
 package com.flowedu.util;
 
+import com.flowedu.config.ConfigHolder;
 import com.flowedu.video.MyVideoListener;
 import com.flowedu.video.Resizer;
 import com.xuggle.mediatool.IMediaReader;
@@ -65,100 +66,33 @@ public class VideoUtils {
 
 
     public static void main(String[] args) throws Exception {
-        //String filenamevideo = "f:/testvidfol/video.mp4"; //video file on your disk
-        File vFile = null;
-        //File initialFile = new File("src/main/resources/sample.txt");
-        InputStream targetStream = new FileInputStream(vFile);
-
-        IMediaWriter mWriter = ToolFactory.makeWriter("f:/testvidfol/videowriter.flv"); //output file
-
-        IContainer containerVideo = IContainer.make();
-
-        if (containerVideo.open(targetStream, null) < 0)
-            throw new IllegalArgumentException("Cant find " + vFile.toString());
-
-        int numStreamVideo = containerVideo.getNumStreams();
-
-        System.out.println("Number of video streams: "+numStreamVideo );
-
-        int videostreamt = -1; //this is the video stream id
-
-        IStreamCoder videocoder = null;
-
-        for(int i=0; i<numStreamVideo; i++){
-            IStream stream = containerVideo.getStream(i);
-            IStreamCoder code = stream.getStreamCoder();
-
-            if(code.getCodecType() == ICodec.Type.CODEC_TYPE_VIDEO)
-            {
-                videostreamt = i;
-                videocoder = code;
-                break;
-            }
-
-        }
-
-
-        if (videostreamt == -1) throw new RuntimeException("No video steam found");
-
-        if(videocoder.open()<0 ) throw new RuntimeException("Cant open video coder");
-        IPacket packetvideo = IPacket.make();
-
-
-        mWriter.addVideoStream(1, 1, videocoder.getWidth(), videocoder.getHeight());
-
-        while(containerVideo.readNextPacket(packetvideo) >= 0){
-            if(packetvideo.getStreamIndex() == videostreamt){
-                //video packet
-                IVideoPicture picture = IVideoPicture.make(videocoder.getPixelType(),
-                        videocoder.getWidth(),
-                        videocoder.getHeight());
-                int offset = 0;
-                while (offset < packetvideo.getSize()){
-                    int bytesDecoded = videocoder.decodeVideo(picture,
-                            packetvideo,
-                            offset);
-                    if(bytesDecoded < 0) throw new RuntimeException("bytesDecoded not working");
-                    offset += bytesDecoded;
-
-                    if(picture.isComplete()){
-                        System.out.println(picture.getPixelType());
-                        mWriter.encodeVideo(1, picture);
-
-                    }
-                }
-            }
-        }
-
-
-
-
-
-
-
-
+        Integer WIDTH = 640;
+        Integer HEIGHT = 380;
+        //String VIDEO_UPLOAD_PATH = ConfigHolder.getVideoUploadsPath();
+        String VIDEO_PATH = "/Users/jihoan/Downloads/TEST.mp4";
 
         // create custom listeners
-//
-//        MyVideoListener myVideoListener = new MyVideoListener(WIDTH, HEIGHT);
-//        Resizer resizer = new Resizer(WIDTH, HEIGHT);
-//
-//        // reader
-        IMediaReader reader = ToolFactory.makeReader(INPUT_FILE);
-//        reader.addListener(resizer);
-//
-//        // writer
-//        IMediaWriter writer = ToolFactory.makeWriter(OUTPUT_FILE, reader);
-//        resizer.addListener(writer);
-//        writer.addListener(myVideoListener);
-//
-//        // show video when encoding
-//        reader.addListener(ToolFactory.makeViewer(true));
-//
-//        while (reader.readPacket() == null) {
-//            // continue coding
-//        }
-//
+        MyVideoListener myVideoListener = new MyVideoListener(WIDTH, HEIGHT);
+        Resizer resizer = new Resizer(WIDTH, HEIGHT);
+
+        // reader
+        IMediaReader reader = ToolFactory.makeReader(VIDEO_PATH);
+        reader.addListener(resizer);
+
+        String outputFile = "/Users/jihoan/Downloads" + "/" +  "test22.mp4";
+        // writer
+        IMediaWriter writer = ToolFactory.makeWriter(outputFile, reader);
+        resizer.addListener(writer);
+        writer.addListener(myVideoListener);
+
+        // show video when encoding
+        //reader.addListener(ToolFactory.makeViewer(false));
+
+        while (reader.readPacket() == null) {
+            // continue coding
+        }
+
+
     }
 
 }
