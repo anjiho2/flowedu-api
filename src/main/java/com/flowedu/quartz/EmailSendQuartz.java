@@ -30,5 +30,6 @@ public class EmailSendQuartz extends QuartzJobBean implements StatefulJob {
     @SuppressWarnings("static-access")
     private void executeJob(JobExecutionContext ex) throws Exception {
         //TODO 회원가입 이메일 발송기능 로직 추가.
+        logger.info("quartz call~~~");
     }
 }
