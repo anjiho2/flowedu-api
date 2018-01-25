@@ -105,10 +105,6 @@
         <property name="maxUploadSize" value="5242880000" />
     </bean>
 
-
-
-
-
   	<!-- ========================= CONFIG OBJECT DEFINITIONS CONFIG ======================== -->
     <bean id="ConfigHolder" class="com.flowedu.config.ConfigHolder"/>
   	<!-- -->
