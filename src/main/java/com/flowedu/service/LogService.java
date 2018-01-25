@@ -22,5 +22,4 @@ public interface LogService {
     void saveLoginLog(LoginLogDto loginLogDto);
 
     void cancelPaymentLog(Long lecturePaymentLogId);
-
 }

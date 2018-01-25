@@ -1,15 +1,25 @@
 package com.flowedu.quartz;
 
+import com.flowedu.dto.EmailSendReservationDto;
+import com.flowedu.service.MessageService;
+import com.flowedu.service.impl.MessageServiceImpl;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.StatefulJob;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.quartz.QuartzJobBean;
+import org.springframework.stereotype.Component;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Component
 public class EmailSendQuartz extends QuartzJobBean implements StatefulJob {
-
     private final static Logger logger = LoggerFactory.getLogger(EmailSendQuartz.class);
 
     private ApplicationContext ctx;
@@ -29,7 +39,18 @@ public class EmailSendQuartz extends QuartzJobBean implements StatefulJob {
 
     @SuppressWarnings("static-access")
     private void executeJob(JobExecutionContext ex) throws Exception {
-        //TODO 회원가입 이메일 발송기능 로직 추가.
-        logger.info("quartz call~~~");
+        //클래스 불러오기
+        MessageServiceImpl messageServiceImpl = (MessageServiceImpl) ctx.getBean("messageServiceImpl");
+
+        List<EmailSendReservationDto> Arr = messageServiceImpl.getEmailSendReservationList();
+        //TODO 2. 이메일 발송.
+        if(Arr.size() > 0) {
+            boolean isSuccess = messageServiceImpl.sendEmail(Arr);
+            if (isSuccess) {
+                for(EmailSendReservationDto dto : Arr) {
+                    messageServiceImpl.updateEmailSendReservationStatus(dto.getIdx(), true);
+                }
+            }
+        }
     }
 }

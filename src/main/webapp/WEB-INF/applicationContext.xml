@@ -105,13 +105,11 @@
         <property name="maxUploadSize" value="5242880000" />
     </bean>
 
-
-
-
-
   	<!-- ========================= CONFIG OBJECT DEFINITIONS CONFIG ======================== -->
     <bean id="ConfigHolder" class="com.flowedu.config.ConfigHolder"/>
-  	<!-- -->
+
+	<!-- ========================= BUSINESS OBJECT DEFINITIONS CONFIG ======================== -->
+	<bean id="messageServiceImpl" class="com.flowedu.service.impl.MessageServiceImpl"/>
   	
   	<!-- ========================= CRONQUARTZ DEFINITIONS ======================== -->
 	<!-- 회원가입 이메일 발송 스케쥴링 -->
@@ -121,7 +119,7 @@
   	</bean>
   	<bean id="cronTrigger1" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="emailSendQuartz"/>
-		<property name="cronExpression" value="0 0/5 * * * ?"/>
+		<property name="cronExpression" value="0 0/1 * * * ?"/>
 	</bean>
 
   	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
