@@ -38,4 +38,5 @@
   <update id="cancelPaymentLog" parameterType="Long">
       UPDATE LECTURE_PAYMENT_LOG SET cancel_yn = 1 WHERE lecture_payment_log_id = #{lecturePaymentLogId}
   </update>
+
 </mapper>

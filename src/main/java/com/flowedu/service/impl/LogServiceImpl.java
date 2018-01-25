@@ -38,10 +38,6 @@ public class LogServiceImpl implements LogService {
             throw new FlowEduException(FlowEduErrorCode.BAD_REQUEST);
         }
         logMapper.insertLecturePaymentLog(lecturePaymentLogDto);
-
-
-
-
     }
 
     /**
@@ -103,13 +99,10 @@ public class LogServiceImpl implements LogService {
     @Transactional(propagation = Propagation.REQUIRED)
     public void cancelPaymentLog(Long lecturePaymentLogId){
         if(lecturePaymentLogId == null) return;
-
         String getAuthType = logMapper.getAuthType(lecturePaymentLogId);
-
         if(getAuthType.equals("D2") || getAuthType.equals("CR")){
             throw new FlowEduException(FlowEduErrorCode.CUSTOM_PAYMENT_CANCEL_ERROR);
         }
-
         logMapper.cancelPaymentLog(lecturePaymentLogId);
     }
 }

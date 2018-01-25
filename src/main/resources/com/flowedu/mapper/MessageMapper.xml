@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.flowedu.mapper.MessageMapper">
+
+    <insert id="saveEmailAddress" parameterType="com.flowedu.dto.EmailSendReservationDto">
+        INSERT INTO EMAIL_SEND_RESERVATION(email_address, name, phone_number, auth_key)
+        VALUES
+        <foreach collection="emailList" item="values" separator=",">
+          (#{values.emailAddress}, #{values.name}, #{values.phoneNumber}, #{values.autokey})
+        </foreach>
+    </insert>
+
+    <select id="getEmailSendReservationList" resultType="com.flowedu.dto.EmailSendReservationDto">
+         SELECT * FROM EMAIL_SEND_RESERVATION
+         WHERE send_yn = false
+    </select>
+
+    <update id="updateEmailSendReservationStatus">
+        UPDATE EMAIL_SEND_RESERVATION SET send_yn = #{sendYn}
+        WHERE idx = #{idx}
+    </update>
+
+</mapper>

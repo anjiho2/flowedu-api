@@ -105,6 +105,8 @@ public class LogController {
     }
 
     /**
+     *
+     *
      * <PRE>
      * 1. Comment : 카드취소 로그 업데이트
      * 2. 작성자 : 원은정
@@ -120,7 +122,6 @@ public class LogController {
         return new ResponseEntity("OK", HttpStatus.OK);
     }
 }
-
 
 
 
