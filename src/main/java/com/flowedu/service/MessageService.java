@@ -12,9 +12,11 @@ public interface MessageService {
 
    void saveEmailAddress(List<EmailSendReservationDto>emailSendReservationDtoList);
 
-   List<EmailSendReservationDto> getEmailSendReservationList();
+   List<EmailSendReservationDto> getEmailSendReservationList(boolean sendYn);
 
    void updateEmailSendReservationStatus(Long idx, boolean sendYn);
 
    boolean sendEmail(List<EmailSendReservationDto>emailSendDtoList);
+
+   void deleteEmailList(boolean sendYn);
 }
