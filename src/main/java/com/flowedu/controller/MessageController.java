@@ -29,7 +29,6 @@ public class MessageController {
 
     @RequestMapping(value = "/save_email" , method = RequestMethod.POST)
     public ResponseEntity saveEmailAddress(@RequestBody List<EmailSendReservationDto>emailSendReservationDtoList){
-        //logger.info(" >>>>>>>>>>>>>>>>>> " + emailSendReservationDtoList);
         messageService.saveEmailAddress(emailSendReservationDtoList);
         return new ResponseEntity("OK", HttpStatus.OK);
     }

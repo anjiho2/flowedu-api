@@ -72,12 +72,12 @@ public class MessageServiceImpl implements MessageService{
                  String message = "<div style=\"border:solid 1px;width:700px;overflow: hidden;background: #fff;\">";
                  message += "<h2 style=\"border-bottom:solid 1px;width:100%;padding:20px;\">플로우교육</h2>";
                  message += "<div style=\"width:400px;margin:50px 150px;\">";
-                 message += "<h3>" + emailSendDto.getName() + "님</h3>";
+                 message += "<h3>" + emailSendDto.getMemberName() + "님</h3>";
                  message += "<h4>회원 아이디는 다음과 같습니다.</h4><br>";
                  message += "<table border=\"1\" style=\"border-collapse: collapse;\">";
                  message += "<tr>";
                  message += "<td>이름</td>";
-                 message += "<td>" + emailSendDto.getName() + "</td>";
+                 message += "<td>" + emailSendDto.getMemberName() + "</td>";
                  message += "</tr>";
                  message += "<tr>";
                  message += "<td rowspan=\"3\">아이디</td>";

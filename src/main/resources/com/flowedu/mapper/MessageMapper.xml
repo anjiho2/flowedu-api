@@ -2,11 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.flowedu.mapper.MessageMapper">
 
-    <insert id="saveEmailAddress" parameterType="com.flowedu.dto.EmailSendReservationDto">
-        INSERT INTO EMAIL_SEND_RESERVATION(email_address, name, phone_number, auth_key)
+    <insert id="saveEmailAddress" parameterType="list">
+        INSERT INTO EMAIL_SEND_RESERVATION
+          (email_address, member_name, phone_number, auth_key)
         VALUES
-        <foreach collection="emailList" item="values" separator=",">
-          (#{values.emailAddress}, #{values.name}, #{values.phoneNumber}, #{values.autokey})
+        <foreach collection="emailList" item="values" index="index" separator=",">
+          (#{values.emailAddress}, #{values.memberName}, #{values.phoneNumber}, #{values.authKey})
         </foreach>
     </insert>
 
