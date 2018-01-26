@@ -39,11 +39,11 @@ public class EmailSendQuartz extends QuartzJobBean implements StatefulJob {
 
     @SuppressWarnings("static-access")
     private void executeJob(JobExecutionContext ex) throws Exception {
-        //클래스 불러오기
+
         MessageServiceImpl messageServiceImpl = (MessageServiceImpl) ctx.getBean("messageServiceImpl");
 
         List<EmailSendReservationDto> Arr = messageServiceImpl.getEmailSendReservationList();
-        //TODO 2. 이메일 발송.
+        //이메일발송
         if(Arr.size() > 0) {
             boolean isSuccess = messageServiceImpl.sendEmail(Arr);
             if (isSuccess) {

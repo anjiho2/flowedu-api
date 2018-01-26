@@ -34,6 +34,15 @@ public class MessageServiceImpl implements MessageService{
     @Autowired
     protected JavaMailSender mailSender;
 
+
+    /**
+     * <PRE>
+     * 1. Comment : 이메일예약발송 저장
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2018. 01. 26
+     * </PRE>
+     * @param emailSendReservationDtoList
+     */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void saveEmailAddress(List<EmailSendReservationDto>emailSendReservationDtoList){
@@ -43,6 +52,14 @@ public class MessageServiceImpl implements MessageService{
         messageMapper.saveEmailAddress(emailSendReservationDtoList);
     }
 
+    /**
+     * <PRE>
+     * 1. Comment : 이메일 발송안된 FALSE값 리스트
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2018. 01. 26
+     * </PRE>
+     * @return
+     */
     @Override
     @Transactional(readOnly = true)
     public List<EmailSendReservationDto> getEmailSendReservationList() {
@@ -50,6 +67,15 @@ public class MessageServiceImpl implements MessageService{
        return Arr;
     }
 
+    /**
+     * <PRE>
+     * 1. Comment : 이메일 발송완료 업데이트
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2018. 01. 26
+     * </PRE>
+     * @param idx
+     * @param sendYn
+     */
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void updateEmailSendReservationStatus(Long idx, boolean sendYn) {
@@ -59,6 +85,15 @@ public class MessageServiceImpl implements MessageService{
         messageMapper.updateEmailSendReservationStatus(sendYn, idx);
     }
 
+    /**
+     * <PRE>
+     * 1. Comment : 이메일 발송
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2018. 01. 26
+     * </PRE>
+     * @param emailSendDtoList
+     * @return
+     */
     @Override
     public boolean sendEmail(List<EmailSendReservationDto>emailSendDtoList){
         if(emailSendDtoList.size() == 0) {

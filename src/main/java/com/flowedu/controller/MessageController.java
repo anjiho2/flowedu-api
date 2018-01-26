@@ -27,19 +27,20 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
+    /**
+     * <PRE>
+     * 1. Comment : 이메일예약발송 저장
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2018. 01. 26
+     * </PRE>
+     * @param emailSendReservationDtoList
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/save_email" , method = RequestMethod.POST)
     public ResponseEntity saveEmailAddress(@RequestBody List<EmailSendReservationDto>emailSendReservationDtoList){
         messageService.saveEmailAddress(emailSendReservationDtoList);
         return new ResponseEntity("OK", HttpStatus.OK);
     }
-
-    @RequestMapping(value = "/test" , method = RequestMethod.POST)
-    public ResponseEntity test(){
-        messageService.updateEmailSendReservationStatus(1L, true);
-        return new ResponseEntity("OK", HttpStatus.OK);
-    }
-
-
-
 
 }
