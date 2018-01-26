@@ -85,4 +85,17 @@
 {
 }
 5. RETURN : OK
+
+<이메일 예약발송저장>
+1. CALL URL : domain/log/save_email
+2. METHOD : POST
+3. TYPE : json
+4. JSON PARAM FORMAT :
+{
+    "emailAddress": "Long",
+    "memberName" : "String",
+    "phoneNumber" : "String"
+    "authKey" : "String"
+}
+5. RETURN : OK
 ======================================================================================

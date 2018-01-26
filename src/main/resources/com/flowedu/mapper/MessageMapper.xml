@@ -4,16 +4,16 @@
 
     <insert id="saveEmailAddress" parameterType="list">
         INSERT INTO EMAIL_SEND_RESERVATION
-          (email_address, member_name, phone_number, auth_key)
+        (email_address, member_name, phone_number, auth_key)
         VALUES
         <foreach collection="emailList" item="values" index="index" separator=",">
-          (#{values.emailAddress}, #{values.memberName}, #{values.phoneNumber}, #{values.authKey})
+            (#{values.emailAddress}, #{values.memberName}, #{values.phoneNumber}, #{values.authKey})
         </foreach>
     </insert>
 
     <select id="getEmailSendReservationList" resultType="com.flowedu.dto.EmailSendReservationDto">
-         SELECT * FROM EMAIL_SEND_RESERVATION
-         WHERE send_yn = false
+        SELECT * FROM EMAIL_SEND_RESERVATION
+        WHERE send_yn = false
     </select>
 
     <update id="updateEmailSendReservationStatus">
