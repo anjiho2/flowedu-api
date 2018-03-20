@@ -15,6 +15,7 @@ import java.util.Locale;
 import java.util.SimpleTimeZone;
 import java.util.StringTokenizer;
 
+import com.flowedu.define.datasource.SmsSendData;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -998,7 +999,7 @@ public class Util {
 	}
 	
 	public static void main(String[] args) throws Exception {
-
+		System.out.println(SmsSendData.getSmsSendContent("LECTURE_ATTEND"));
 	 }
 }
 

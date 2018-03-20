@@ -1,12 +1,17 @@
 package com.flowedu.service.impl;
 
-import com.flowedu.domain.LecturePaymentLog;
+import com.flowedu.api.ApiService;
 import com.flowedu.dto.LecturePaymentLogDto;
 import com.flowedu.dto.LoginLogDto;
+import com.flowedu.dto.SmsSendLogDto;
 import com.flowedu.error.FlowEduErrorCode;
 import com.flowedu.error.FlowEduException;
 import com.flowedu.mapper.LogMapper;
 import com.flowedu.service.LogService;
+import com.flowedu.util.GsonJsonUtil;
+import com.google.gson.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -20,7 +25,9 @@ import java.util.List;
 @Service
 public class LogServiceImpl implements LogService {
 
-@Autowired
+    protected static final Logger logger = LoggerFactory.getLogger(LogServiceImpl.class);
+
+    @Autowired
     private LogMapper logMapper;
 
     /**
@@ -104,6 +111,27 @@ public class LogServiceImpl implements LogService {
             throw new FlowEduException(FlowEduErrorCode.CUSTOM_PAYMENT_CANCEL_ERROR);
         }
         logMapper.cancelPaymentLog(lecturePaymentLogId);
+    }
+
+    /**
+     * <PRE>
+     * 1. Comment : SMS발송 내역 로그 저장하기
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2018. 01 .31
+     * </PRE>
+     * @param logInfo
+     */
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void saveSmsSendLog(String logInfo) {
+        if ("".equals(logInfo)) return;
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(logInfo);
+        JsonObject object = element.getAsJsonObject();
+
+        Gson gson = new Gson();
+        SmsSendLogDto smsSendLogDto = gson.fromJson(object, SmsSendLogDto.class);
+        logMapper.insertSmsSendLog(smsSendLogDto);
     }
 }
 

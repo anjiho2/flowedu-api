@@ -16,6 +16,20 @@
         )
     </insert>
 
+    <insert id="insertSmsSendLog" parameterType="com.flowedu.dto.SmsSendLogDto">
+      INSERT INTO SMS_SEND_LOG
+      (result_code, message, msg_id, success_cnt, error_cnt, msg_type)
+      VALUES
+      (#{result_code}, #{message}, #{msg_id}, #{success_cnt}, #{error_cnt}, #{msg_type})
+    </insert>
+
+    <insert id="saveLoginLog" parameterType="com.flowedu.dto.LoginLogDto">
+        INSERT INTO MEMBER_LOGIN_LOG
+        (member_id, member_name, connect_ip)
+        VALUES
+        (#{memberId}, #{memberName}, #{connectIp});
+    </insert>
+
     <select id="receiptList" resultType="com.flowedu.domain.LecturePaymentLog">
         SELECT * FROM LECTURE_PAYMENT_LOG WHERE lecture_rel_id = #{lectureRelId}
     </select>
@@ -23,13 +37,6 @@
     <select id="receiptListOne" resultType="com.flowedu.domain.LecturePaymentLog">
         SELECT * FROM LECTURE_PAYMENT_LOG WHERE lecture_payment_log_id = #{lecturePaymentLogId}
     </select>
-
-    <insert id="saveLoginLog" parameterType="com.flowedu.dto.LoginLogDto">
-      INSERT INTO MEMBER_LOGIN_LOG
-      (member_id, member_name, connect_ip)
-      VALUES
-      (#{memberId}, #{memberName}, #{connectIp});
-    </insert>
 
     <select id="getAuthType" resultType="String">
         SELECT auth_type FROM LECTURE_PAYMENT_LOG WHERE lecture_payment_log_id = #{lecturePaymentLogId}

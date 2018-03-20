@@ -32,4 +32,8 @@
     <entry key="video.resize.width">${video.resize.width}</entry>
     <entry key="video.resize.height">${video.resize.height}</entry>
     <entry key="video.thumbnail.uploads.path">${video.thumbnail.uploads.path}</entry>
+
+    <entry key="sms.api.key">${sms.api.key}</entry>
+    <entry key="sms.send.number">${sms.send.number}</entry>
+    <entry key="sms.test">${sms.test}</entry>
 </properties>

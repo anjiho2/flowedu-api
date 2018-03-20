@@ -1,7 +1,7 @@
 package com.flowedu.controller;
 
 import com.flowedu.domain.GoogleCredential;
-import com.flowedu.youtube.service.YoutubeService;
+//import com.flowedu.youtube.service.YoutubeService;
 import com.google.api.client.auth.oauth2.Credential;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +24,8 @@ public class YoutubeController {
 
     private static final Logger logger = LoggerFactory.getLogger(YoutubeController.class);
 
-    @Autowired
-    private YoutubeService youtubeService;
+    //@Autowired
+   // private YoutubeService youtubeService;
 
     /**
      * <PRE>
@@ -37,27 +37,27 @@ public class YoutubeController {
      * @return
      * @throws IOException
      */
-    @RequestMapping(value = "/upload_video", method = RequestMethod.POST)
-    public ResponseEntity uploadVideo(MultipartHttpServletRequest request) throws IOException {
-        MultipartFile videoFile = request.getFile("file_name");
-        File destFile = new File(videoFile.getOriginalFilename());
-        videoFile.transferTo(destFile);
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        youtubeService.uploadYoutubeVideo(destFile, title, description);
-        return new ResponseEntity("OK", HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/upload_video", method = RequestMethod.POST)
+//    public ResponseEntity uploadVideo(MultipartHttpServletRequest request) throws IOException {
+//        MultipartFile videoFile = request.getFile("file_name");
+//        File destFile = new File(videoFile.getOriginalFilename());
+//        videoFile.transferTo(destFile);
+//        String title = request.getParameter("title");
+//        String description = request.getParameter("description");
+//        youtubeService.uploadYoutubeVideo(destFile, title, description);
+//        return new ResponseEntity("OK", HttpStatus.OK);
+//    }
 
-    @RequestMapping(value = "/video_list", method = RequestMethod.POST)
-    public ResponseEntity videoList(MultipartHttpServletRequest request) {
-        youtubeService.videoList();
-        return new ResponseEntity("OK", HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/video_list", method = RequestMethod.POST)
+//    public ResponseEntity videoList(MultipartHttpServletRequest request) {
+//        youtubeService.videoList();
+//        return new ResponseEntity("OK", HttpStatus.OK);
+//    }
 
-    @RequestMapping(value = "/credential_info", method = RequestMethod.POST)
-    public ResponseEntity googleCredential() throws IOException {
-        GoogleCredential googleCredential = youtubeService.getGoogleCredentialInfo();
-        return new ResponseEntity(googleCredential, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/credential_info", method = RequestMethod.POST)
+//    public ResponseEntity googleCredential() throws IOException {
+//        GoogleCredential googleCredential = youtubeService.getGoogleCredentialInfo();
+//        return new ResponseEntity(googleCredential, HttpStatus.OK);
+//    }
 
 }

@@ -25,6 +25,12 @@ public class ConfigHolder {
     private int videoResizeHeight;
     @Value("#{config['video.thumbnail.uploads.path']}")
     private String videoThumbnailUploadsPath;
+    @Value("#{config['sms.api.key']}")
+    private String smsApiKey;
+    @Value("#{config['sms.send.number']}")
+    private String smsSendNumber;
+    @Value("#{config['sms.test']}")
+    private boolean isSmsTest;
 
 
     @PostConstruct
@@ -60,6 +66,12 @@ public class ConfigHolder {
     public static String getVideoThumbnailUploadsPath() {
         return config.videoThumbnailUploadsPath;
     }
+
+    public static String getSmsAPiKey() { return config.smsApiKey; }
+
+    public static String getSmsSendNumber() { return config.smsSendNumber; }
+
+    public static boolean isSmsTest() { return config.isSmsTest; }
 
 
 }
