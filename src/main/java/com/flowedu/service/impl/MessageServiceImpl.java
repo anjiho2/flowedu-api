@@ -6,6 +6,7 @@ import com.flowedu.error.FlowEduErrorCode;
 import com.flowedu.error.FlowEduException;
 import com.flowedu.mapper.MessageMapper;
 import com.flowedu.service.MessageService;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,13 +59,27 @@ public class MessageServiceImpl implements MessageService{
      * 2. 작성자 : 원은정
      * 3. 작성일 : 2018. 01. 26
      * </PRE>
-     * @return
+     * @param sendYn
+     *   * @return
      */
     @Override
+
     @Transactional(readOnly = true)
-    public List<EmailSendReservationDto> getEmailSendReservationList() {
-       List<EmailSendReservationDto>Arr = messageMapper.getEmailSendReservationList();
+    public List<EmailSendReservationDto> getEmailSendReservationList(boolean sendYn) {
+       List<EmailSendReservationDto>Arr = messageMapper.getEmailSendReservationList(sendYn);
        return Arr;
+    }
+
+    /**
+     * <PRE>
+     * 1. Comment : 이메일 발송리스트 삭제
+     * 2. 작성자 : 원은정
+     * 3. 작성일 : 2018. 01. 26
+     * </PRE>
+     * @param sendYn
+     */
+    public void deleteEmailList(boolean sendYn){
+        messageMapper.deleteEmailList(sendYn);
     }
 
     /**

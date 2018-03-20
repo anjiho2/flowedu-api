@@ -13,12 +13,17 @@
 
     <select id="getEmailSendReservationList" resultType="com.flowedu.dto.EmailSendReservationDto">
         SELECT * FROM EMAIL_SEND_RESERVATION
-        WHERE send_yn = false
+        WHERE send_yn = #{sendYn}
     </select>
 
     <update id="updateEmailSendReservationStatus">
         UPDATE EMAIL_SEND_RESERVATION SET send_yn = #{sendYn}
         WHERE idx = #{idx}
     </update>
+
+    <delete id="deleteEmailList">
+        DELETE FROM EMAIL_SEND_RESERVATION
+        WHERE send_yn = #{sendYn}
+    </delete>
 
 </mapper>

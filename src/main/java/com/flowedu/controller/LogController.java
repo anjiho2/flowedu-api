@@ -121,6 +121,7 @@ public class LogController {
         logService.cancelPaymentLog(lecturePaymentLogId);
         return new ResponseEntity("OK", HttpStatus.OK);
     }
+
 }
 
 

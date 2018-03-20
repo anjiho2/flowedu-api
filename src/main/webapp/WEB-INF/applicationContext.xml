@@ -121,11 +121,21 @@
 		<property name="jobDetail" ref="emailSendQuartz"/>
 		<property name="cronExpression" value="0 0/1 * * * ?"/>
 	</bean>
+	<!-- 이메일 발송리스트 삭제  -->
+	<bean id="emailDeleteQuartz" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.flowedu.quartz.EmailDeleteQuartz" />
+		<property name="applicationContextJobDataKey" value="applicationContext" />
+	</bean>
+	<bean id="cronTrigger2" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="emailDeleteQuartz" />
+		<property name="cronExpression" value="0 0 2 * * ?" />
+	</bean>
 
   	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
 				<ref bean="cronTrigger1"/>
+				<ref bean="cronTrigger2"/>
 			</list>
 		</property>
 		<property name="quartzProperties">
