@@ -42,8 +42,8 @@
         SELECT auth_type FROM LECTURE_PAYMENT_LOG WHERE lecture_payment_log_id = #{lecturePaymentLogId}
     </select>
 
-  <update id="cancelPaymentLog" parameterType="Long">
-      UPDATE LECTURE_PAYMENT_LOG SET cancel_yn = 1 WHERE lecture_payment_log_id = #{lecturePaymentLogId}
-  </update>
+    <update id="cancelPaymentLog" parameterType="Long">
+        UPDATE LECTURE_PAYMENT_LOG SET cancel_yn = 1 WHERE lecture_payment_log_id = #{lecturePaymentLogId}
+    </update>
 
 </mapper>

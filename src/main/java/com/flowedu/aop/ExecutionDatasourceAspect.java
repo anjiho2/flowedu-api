@@ -7,6 +7,7 @@ import com.flowedu.define.datasource.DataSource;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +20,15 @@ import org.springframework.stereotype.Component;
 public class ExecutionDatasourceAspect {
 	
 	final static Logger logger = LoggerFactory.getLogger(ExecutionDatasourceAspect.class);
-	
-	@Around("execution(public* com.flowedu.service.*.*(..))")
+
+	@Pointcut("execution(* com.flowedu..*Service.*(..))")
+	public void serviceDB(){}
+
+	@Pointcut("@annotation(javax.annotation.PostConstruct)")
+	public void postConstruct(){}
+
+	@Around("(serviceDB() || postConstruct())")
+	//@Around("execution(public* com.flowedu.service.*.*(..))")
 	public Object doManagerProfiling(ProceedingJoinPoint joinPoint) throws Throwable {
 		logger.info("############## do data source aspect ##############");
 		final String methodName = joinPoint.getSignature().getName();

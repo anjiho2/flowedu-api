@@ -13,15 +13,15 @@ import java.io.IOException;
 @Component
 public class RabbitmqClient {
 
-    public static String HOST = "192.168.0.201";
+    public static String HOST = "192.168.0.59";
     private Connection connection = null;
     private Channel channel = null;
 
-    public Channel getChannel() throws IOException,Exception {
+    public Channel getChannel() throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RabbitmqClient.HOST);
-        factory.setUsername("guest");
-        factory.setPassword("guest");
+        factory.setUsername("flowedu");
+        factory.setPassword("flowedu3400");
         factory.setPort(5672);
         this.connection = factory.newConnection();
         this.channel = connection.createChannel();
@@ -29,7 +29,7 @@ public class RabbitmqClient {
         return this.channel;
     }
 
-    public void close() throws IOException, Exception {
+    public void close() throws Exception {
         this.channel.close();
         this.connection.close();
     }

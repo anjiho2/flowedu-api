@@ -12,6 +12,6 @@ public class Delete {
         RabbitmqClient rabbitmqClient = new RabbitmqClient();
         Channel channel = rabbitmqClient.getChannel();
 
-        channel.queueDelete("hello_que");
+        channel.queueDelete("hello_que20");
     }
 }

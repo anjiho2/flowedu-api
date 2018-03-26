@@ -1,5 +1,5 @@
 package com.flowedu.define.datasource;
 
 public enum DataSourceType {
-	LOG
+	LOG, ADMIN
 }

@@ -38,7 +38,6 @@ public class Sender {
         String message = "Hello World22";
         channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
         System.out.println(" [x] Sent '" + message + "'");
-
         client.close();
 
     }

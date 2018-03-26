@@ -1,0 +1,101 @@
+======================================================================================
+/										LogController								/
+======================================================================================
+<학원강의 결제 로그를 저장한다.>
+1. CALL URL : domain/log/payment
+2. METHOD : POST
+3. TYPE : json
+4. JSON PARAM FORMAT :
+{
+    "lectureName": "String",
+    "paymentPrice": "int",
+    "studentName" : "String",
+    "memberName" : "String"
+}
+5. RETURN : OK
+
+<연관 카드결제정보 리스트 가져오기>
+1. CALL URL : /payment/receipt_list/1
+2. METHOD : GET
+3. TYPE : json
+4. JSON PARAM FORMAT :{}
+5. RETURN :
+[
+    {
+        "lecturePaymentLogId": 33,
+        "lectureRelId": 1,
+        "lectureName": "원은정",
+        "paymentPrice": 10000,
+        "studentName": "은정학생",
+        "memberName": "관리자1",
+        "createDate": "2017-11-10 17:16:18.0",
+        "catId": 90100546,
+        "cardNo": 546112,
+        "installMent": "00",
+        "transAmt": 1004,
+        "authNo": 30001098,
+        "replyDate": 171108114815,
+        "accepterCode": "012",
+        "issureCode": "012",
+        "issureName": "NH체크카드",
+        "transNo": "0002",
+        "merchantRegNo": 106709207,
+        "recvData": null,
+        "authType": "CC"
+    }, .....
+]
+
+<단일 카드결제정보 리스트 가져오기>
+1. CALL URL : /payment/receipt_list_payment_log_id/1
+2. METHOD : GET
+3. TYPE : json
+4. JSON PARAM FORMAT :{}
+5. RETURN :
+[
+    {
+        "lecturePaymentLogId": 33,
+        "lectureRelId": 1,
+        "lectureName": "원은정",
+        "paymentPrice": 10000,
+        "studentName": "은정학생",
+        "memberName": "관리자1",
+        "createDate": "2017-11-10 17:16:18.0",
+        "catId": 90100546,
+        "cardNo": 546112,
+        "installMent": "00",
+        "transAmt": 1004,
+        "authNo": 30001098,
+        "replyDate": 171108114815,
+        "accepterCode": "012",
+        "issureCode": "012",
+        "issureName": "NH체크카드",
+        "transNo": "0002",
+        "merchantRegNo": 106709207,
+        "recvData": null,
+        "authType": "CC"
+    }, .....
+]
+
+
+<카드결제취소 로그 저장>
+1. CALL URL : /payment/cancel/33
+2. METHOD : PUT
+3. TYPE : -
+4. JSON PARAM FORMAT :
+{
+}
+5. RETURN : OK
+
+<이메일 예약발송저장>
+1. CALL URL : domain/log/save_email
+2. METHOD : POST
+3. TYPE : json
+4. JSON PARAM FORMAT :
+{
+    "emailAddress": "Long",
+    "memberName" : "String",
+    "phoneNumber" : "String"
+    "authKey" : "String"
+}
+5. RETURN : OK
+======================================================================================
